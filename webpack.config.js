@@ -3,6 +3,7 @@ var webpack = require('webpack');
 module.exports = {
   entry: {
     app: "./src/app.js",
+    vendor: ["react","react-dom"]
   },
   output: {
     path: "./dist",
@@ -14,7 +15,8 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.optimize.CommonsChunkPlugin("vendor","vendor.bundle.js")
   ],
   devServer: {
     hot: true,
