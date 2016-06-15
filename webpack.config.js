@@ -10,5 +10,8 @@ module.exports = {
     loaders: [
       { test: /\.jsx?/, loader: "babel" }
     ]
+  },
+  devServer: {
+    contentBase: './dist'
   }
 };
