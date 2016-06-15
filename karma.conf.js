@@ -9,9 +9,20 @@ module.exports = function(config) {
     
     webpack: {
       module: {
-        loaders: [
-          { test: /\.jsx$/, loader: "babel" }
-        ]
+        loaders: [{ 
+            test: /\.jsx?$/,
+            loader: "babel",
+            exclude: /node_modules/,
+            query: { presets: ['es2015','stage-0','react'] }
+        },{
+          test: /\.json$/,
+          loader: "json"
+        }]
+      },
+      externals: {
+        'react/addons': true,
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': true
       }
     },
     webpackServer: {
@@ -23,7 +34,8 @@ module.exports = function(config) {
       'karma-chai',
       'karma-webpack',
       'karma-phantomjs-launcher',
-      'karma-spec-reporter'
+      'karma-spec-reporter',
+      'karma-sourcemap-loader'
     ],
 
     // frameworks to use
@@ -33,9 +45,9 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      //'src/**/*.js',
       'test/**/*Spec.js'
     ],
-
 
     // list of files to exclude
     exclude: [
@@ -46,6 +58,8 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      //'src/**/*.js': ['webpack', 'sourcemap'],
+      'test/**/*Spec.js': ['webpack', 'sourcemap']
     },
 
 

@@ -7,4 +7,7 @@ const App = React.createClass({
   }
 });
 
-ReactDOM.render(<App/>, document.getElementById('container'));
+// for karma test runner, follow line should not contain.
+// ReactDOM.render(<App/>, document.getElementById('container'));
+
+module.exports = App;
