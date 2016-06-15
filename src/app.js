@@ -6,3 +6,5 @@ const App = React.createClass({
     return <div>Text text text</div>;
   }
 });
+
+ReactDOM.render(<App/>, document.getElementById('container'));
