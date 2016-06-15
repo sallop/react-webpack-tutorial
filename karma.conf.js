@@ -6,10 +6,24 @@ module.exports = function(config) {
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
+    
+    webpack: {
+      module: {
+        loaders: [
+          { test: /\.jsx$/, loader: "babel" }
+        ]
+      }
+    },
+    webpackServer: {
+      noInfo: true
+    },
 
     plugins: [
       'karma-mocha',
       'karma-chai',
+      'karma-webpack',
+      'karma-phantomjs-launcher',
+      'karma-spec-reporter'
     ],
 
     // frameworks to use
